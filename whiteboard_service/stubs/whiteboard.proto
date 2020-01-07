@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package whiteboard;
+
+service WhiteBoardService {
+  rpc updateBoard(BoardUpdateRequest) returns (BoardUpdateResponse);
+}
+
+enum BoardStatusEnum {
+  OUT = 0;
+  IN = 1;
+  ERROR = 2;
+  OFF = 3;
+}
+
+message BoardUpdate {
+  uint32 position = 1;
+  BoardStatusEnum status = 2;
+}
+
+message BoardUpdateRequest { repeated BoardUpdate updates = 1; }
+
+message BoardUpdateResponse { bool requestStatus = 1; }
