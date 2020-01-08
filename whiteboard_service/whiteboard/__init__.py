@@ -33,9 +33,12 @@ class WhiteboardStatusEnum(Enum):
 
 
 class Whiteboard:
-    def __init__(self, row_count: int, use_board: bool):
+    def __init__(self, row_count: int, use_board: bool, pixels=None):
         self.row_count = row_count
-        self.pixels = pixel_factory(row_count, use_board)
+        if pixels:
+            self.pixels = pixels
+        else:
+            self.pixels = pixel_factory(row_count, use_board)
 
     def _translate_position(self, index: int):
         num_leds = self.row_count
