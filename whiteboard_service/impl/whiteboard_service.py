@@ -1,6 +1,6 @@
 from whiteboard_service.config import LOGGER
-from whiteboard_service.stubs.whiteboard_pb2_grpc import WhiteboardServiceServicer
 from whiteboard_service.stubs.whiteboard_pb2 import BoardUpdateResponse
+from whiteboard_service.stubs.whiteboard_pb2_grpc import WhiteboardServiceServicer
 from whiteboard_service.whiteboard import Whiteboard
 
 

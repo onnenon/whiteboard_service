@@ -51,7 +51,7 @@ class Whiteboard:
         """
         Change LED of given position to new value
         """
-        if position >= len(self.pixels):
+        if position >= self.row_count:
             raise WhiteboardError(
                 "position {} exceeds row count {}".format(position, self.row_count)
             )
