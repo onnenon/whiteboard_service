@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+
 import grpc
 
 
@@ -24,20 +25,20 @@ def cred_factory() -> grpc.ServerCredentials:
     return grpc.ssl_server_credentials((private_key, cert))
 
 
-CERT_FILE = os.getenv("CERT_FILE", "whiteboard.crt")
-KEY_FILE = os.getenv("KEY_FILE", "whiteboard.key")
+CERT_FILE: str = os.getenv("CERT_FILE", "whiteboard.crt")
+KEY_FILE: str = os.getenv("KEY_FILE", "whiteboard.key")
 
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
-LOGGER = logFactory(LOG_LEVEL)
+LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
+LOGGER: logging.Logger = logFactory(LOG_LEVEL)
 
-SERVER_PORT = os.getenv("SERVER_PORT", "8990")
-SERVER_HOST = os.getenv("SERVER_HOST", "localhost")
-SERVER_SOCKET = f"{SERVER_HOST}:{SERVER_PORT}"
+SERVER_PORT: str = os.getenv("SERVER_PORT", "8990")
+SERVER_HOST: str = os.getenv("SERVER_HOST", "localhost")
+SERVER_SOCKET: str = f"{SERVER_HOST}:{SERVER_PORT}"
 
-ROW_COUNT = os.getenv("ROW_COUNT", 20)
-USE_BOARD = None
+ROW_COUNT: int = os.getenv("ROW_COUNT", 20)
+USE_BOARD: bool = True if os.getenv("USE_BOARD") is not None else False
 
-BANNER = f"""
+BANNER: str = f"""
 
 *************************************************
 

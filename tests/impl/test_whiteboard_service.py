@@ -1,9 +1,8 @@
 from dataclasses import dataclass
 from unittest import TestCase
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 from whiteboard_service.impl.whiteboard_service import WhiteboardService
-from whiteboard_service.whiteboard import Whiteboard
 
 
 @dataclass
@@ -13,9 +12,9 @@ class Update:
 
 
 class ServiceTests(TestCase):
-    @patch.object(Whiteboard, "set_status")
-    def test_updateBoard(self, set_status_mock):
-        service = WhiteboardService()
+    def test_updateBoard(self):
+        whiteboard_mock = MagicMock()
+        service = WhiteboardService(whiteboard_mock)
         request = MagicMock()
         request.updates = [
             Update(1, 4),
@@ -24,4 +23,4 @@ class ServiceTests(TestCase):
 
         service.updateBoard(request, None)
 
-        self.assertEquals(set_status_mock.call_count, 2)
+        self.assertEquals(whiteboard_mock.set_status.call_count, 2)

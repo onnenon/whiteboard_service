@@ -2,19 +2,24 @@ from concurrent import futures
 
 import grpc
 
-from whiteboard_service.config import BANNER, LOGGER, SERVER_SOCKET, cred_factory
+from whiteboard_service import config
 from whiteboard_service.impl.whiteboard_service import WhiteboardService
 from whiteboard_service.stubs import whiteboard_pb2_grpc
+from whiteboard_service.whiteboard import Whiteboard
 
 
 def main():
+    LOGGER = config.LOGGER
+
     server = grpc.server(futures.ThreadPoolExecutor())
 
+    whiteboard = Whiteboard(config.ROW_COUNT, config.USE_BOARD)
+
     whiteboard_pb2_grpc.add_WhiteBoardServiceServicer_to_server(
-        WhiteboardService(), server
+        WhiteboardService(whiteboard), server
     )
 
-    LOGGER.info(BANNER)
+    LOGGER.info(config.BANNER)
 
     try:
         server.start()
@@ -30,10 +35,10 @@ def server_factory(env: str) -> grpc.Server:
         WhiteboardService(), server
     )
     if env != "PROD":
-        server.add_insecure_port(SERVER_SOCKET)
+        server.add_insecure_port(config.SERVER_SOCKET)
     else:
-        credentials = cred_factory()
-        server.add_secure_port(SERVER_SOCKET, credentials)
+        credentials = config.cred_factory()
+        server.add_secure_port(config.SERVER_SOCKET, credentials)
 
     return server
 

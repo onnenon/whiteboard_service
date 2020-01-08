@@ -1,15 +1,15 @@
 from enum import Enum
-from whiteboard_service import config
 
-_pixels = [{}] * config.ROW_COUNT
 
-_leds = []
+def pixel_factory(row_count: int, use_board: bool):
+    if use_board:
+        import board
+        import neopixel
 
-if config.USE_BOARD is not None:
-    import board
-    import neopixel
+        return neopixel.NeoPixel(board.D12, row_count)
+    else:
+        return [{}] * row_count
 
-    _pixels = neopixel.NeoPixel(board.D12, config.ROW_COUNT)
 
 _colors = {
     "red": (35, 0, 0),
@@ -33,32 +33,33 @@ class WhiteboardStatusEnum(Enum):
 
 
 class Whiteboard:
-    @staticmethod
-    def _translate_position(index: int):
-        num_leds = len(_pixels)
+    def __init__(self, row_count: int, use_board: bool):
+        self.row_count = row_count
+        self.pixels = pixel_factory(row_count, use_board)
+
+    def _translate_position(self, index: int):
+        num_leds = self.row_count
         if index < num_leds / 2:
             return num_leds - (1 + index)
         else:
             return index - (num_leds // 2)
 
-    @staticmethod
-    def set_status(position: int, status: int):
+    def set_status(self, position: int, status: int):
         """
         Change LED of given position to new value
         """
-        if position >= len(_pixels):
+        if position >= len(self.pixels):
             raise WhiteboardError(
-                "position {} exceeds row count {}".format(position, len(_pixels))
+                "position {} exceeds row count {}".format(position, self.row_count)
             )
         led_position = Whiteboard._translate_position(position)
         if status == WhiteboardStatusEnum.OUT.value:
-            _pixels[led_position] = _colors["yellow"]
+            self.pixels[led_position] = _colors["yellow"]
         elif status == WhiteboardStatusEnum.IN.value:
-            _pixels[led_position] = _colors["green"]
+            self.pixels[led_position] = _colors["green"]
         else:
-            _pixels[led_position] = _colors["off"]
+            self.pixels[led_position] = _colors["off"]
 
-    @staticmethod
-    def toggle_status(status: WhiteboardStatusEnum):
-        for i in range(len(_pixels)):
-            Whiteboard.set_status(i, status)
+    def toggle_status(self, status: WhiteboardStatusEnum):
+        for i in range(self.row_count):
+            self.set_status(i, status)
