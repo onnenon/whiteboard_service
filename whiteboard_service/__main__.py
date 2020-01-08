@@ -11,13 +11,9 @@ from whiteboard_service.whiteboard import Whiteboard
 def main():
     LOGGER = config.LOGGER
 
-    server = grpc.server(futures.ThreadPoolExecutor())
-
     whiteboard = Whiteboard(config.ROW_COUNT, config.USE_BOARD)
 
-    whiteboard_pb2_grpc.add_WhiteboardServiceServicer_to_server(
-        WhiteboardService(whiteboard), server
-    )
+    server = server_factory(config.ENV, whiteboard)
 
     LOGGER.info(config.BANNER)
 
@@ -28,12 +24,13 @@ def main():
         LOGGER.error(e.message)
 
 
-def server_factory(env: str) -> grpc.Server:
+def server_factory(env: str, whiteboard: Whiteboard) -> grpc.Server:
     server = grpc.server(futures.ThreadPoolExecutor())
 
-    whiteboard_pb2_grpc.add_WhiteBoardServiceServicer_to_server(
-        WhiteboardService(), server
+    whiteboard_pb2_grpc.add_WhiteboardServiceServicer_to_server(
+        WhiteboardService(whiteboard), server
     )
+
     if env != "PROD":
         server.add_insecure_port(config.SERVER_SOCKET)
     else:

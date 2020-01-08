@@ -55,7 +55,7 @@ class Whiteboard:
             raise WhiteboardError(
                 "position {} exceeds row count {}".format(position, self.row_count)
             )
-        led_position = Whiteboard._translate_position(position)
+        led_position = Whiteboard._translate_position(self, position)
         if status == WhiteboardStatusEnum.OUT.value:
             self.pixels[led_position] = _colors["yellow"]
         elif status == WhiteboardStatusEnum.IN.value:

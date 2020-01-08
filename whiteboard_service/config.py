@@ -25,6 +25,8 @@ def cred_factory() -> grpc.ServerCredentials:
     return grpc.ssl_server_credentials((private_key, cert))
 
 
+ENV: str = os.getenv("ENV", "DEV")
+
 CERT_FILE: str = os.getenv("CERT_FILE", "whiteboard.crt")
 KEY_FILE: str = os.getenv("KEY_FILE", "whiteboard.key")
 
