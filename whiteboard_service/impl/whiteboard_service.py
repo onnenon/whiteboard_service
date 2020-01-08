@@ -1,10 +1,10 @@
 from whiteboard_service.config import LOGGER
 from whiteboard_service.stubs.whiteboard_pb2 import BoardUpdateResponse
-from whiteboard_service.stubs.whiteboard_pb2_grpc import WhiteBoardServiceServicer
+from whiteboard_service.stubs.whiteboard_pb2_grpc import WhiteboardServiceServicer
 from whiteboard_service.whiteboard import Whiteboard
 
 
-class WhiteboardService(WhiteBoardServiceServicer):
+class WhiteboardService(WhiteboardServiceServicer):
     def __init__(self, whiteboard: Whiteboard):
         super().__init__()
         self.whiteboard = whiteboard

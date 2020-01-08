@@ -4,7 +4,7 @@ import grpc
 import whiteboard_service.stubs.whiteboard_pb2 as whiteboard__pb2
 
 
-class WhiteBoardServiceStub(object):
+class WhiteboardServiceStub(object):
     # missing associated documentation comment in .proto file
     pass
 
@@ -15,13 +15,13 @@ class WhiteBoardServiceStub(object):
       channel: A grpc.Channel.
     """
         self.updateBoard = channel.unary_unary(
-            "/whiteboard.WhiteBoardService/updateBoard",
+            "/Whiteboard.WhiteboardService/updateBoard",
             request_serializer=whiteboard__pb2.BoardUpdateRequest.SerializeToString,
             response_deserializer=whiteboard__pb2.BoardUpdateResponse.FromString,
         )
 
 
-class WhiteBoardServiceServicer(object):
+class WhiteboardServiceServicer(object):
     # missing associated documentation comment in .proto file
     pass
 
@@ -33,7 +33,7 @@ class WhiteBoardServiceServicer(object):
         raise NotImplementedError("Method not implemented!")
 
 
-def add_WhiteBoardServiceServicer_to_server(servicer, server):
+def add_WhiteboardServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
         "updateBoard": grpc.unary_unary_rpc_method_handler(
             servicer.updateBoard,
@@ -42,6 +42,6 @@ def add_WhiteBoardServiceServicer_to_server(servicer, server):
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        "whiteboard.WhiteBoardService", rpc_method_handlers
+        "Whiteboard.WhiteboardService", rpc_method_handlers
     )
     server.add_generic_rpc_handlers((generic_handler,))

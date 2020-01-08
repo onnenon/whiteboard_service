@@ -11,7 +11,6 @@ from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import enum_type_wrapper
 
 _b = sys.version_info[0] < 3 and (lambda x: x) or (lambda x: x.encode("latin1"))
-
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -19,17 +18,17 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
     name="whiteboard.proto",
-    package="whiteboard",
+    package="Whiteboard",
     syntax="proto3",
     serialized_options=None,
     serialized_pb=_b(
-        '\n\x10whiteboard.proto\x12\nwhiteboard"L\n\x0b\x42oardUpdate\x12\x10\n\x08position\x18\x01 \x01(\r\x12+\n\x06status\x18\x02 \x01(\x0e\x32\x1b.whiteboard.BoardStatusEnum">\n\x12\x42oardUpdateRequest\x12(\n\x07updates\x18\x01 \x03(\x0b\x32\x17.whiteboard.BoardUpdate",\n\x13\x42oardUpdateResponse\x12\x15\n\rrequestStatus\x18\x01 \x01(\x08*6\n\x0f\x42oardStatusEnum\x12\x07\n\x03OUT\x10\x00\x12\x06\n\x02IN\x10\x01\x12\t\n\x05\x45RROR\x10\x02\x12\x07\n\x03OFF\x10\x03\x32\x63\n\x11WhiteBoardService\x12N\n\x0bupdateBoard\x12\x1e.whiteboard.BoardUpdateRequest\x1a\x1f.whiteboard.BoardUpdateResponseb\x06proto3'
+        '\n\x10whiteboard.proto\x12\nWhiteboard"L\n\x0b\x42oardUpdate\x12\x10\n\x08position\x18\x01 \x01(\r\x12+\n\x06status\x18\x02 \x01(\x0e\x32\x1b.Whiteboard.BoardStatusEnum">\n\x12\x42oardUpdateRequest\x12(\n\x07updates\x18\x01 \x03(\x0b\x32\x17.Whiteboard.BoardUpdate"\x15\n\x13\x42oardUpdateResponse*6\n\x0f\x42oardStatusEnum\x12\x07\n\x03OUT\x10\x00\x12\x06\n\x02IN\x10\x01\x12\t\n\x05\x45RROR\x10\x02\x12\x07\n\x03OFF\x10\x03\x32\x63\n\x11WhiteboardService\x12N\n\x0bupdateBoard\x12\x1e.Whiteboard.BoardUpdateRequest\x1a\x1f.Whiteboard.BoardUpdateResponseb\x06proto3'
     ),
 )
 
 _BOARDSTATUSENUM = _descriptor.EnumDescriptor(
     name="BoardStatusEnum",
-    full_name="whiteboard.BoardStatusEnum",
+    full_name="Whiteboard.BoardStatusEnum",
     filename=None,
     file=DESCRIPTOR,
     values=[
@@ -48,8 +47,8 @@ _BOARDSTATUSENUM = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=220,
-    serialized_end=274,
+    serialized_start=197,
+    serialized_end=251,
 )
 _sym_db.RegisterEnumDescriptor(_BOARDSTATUSENUM)
 
@@ -62,14 +61,14 @@ OFF = 3
 
 _BOARDUPDATE = _descriptor.Descriptor(
     name="BoardUpdate",
-    full_name="whiteboard.BoardUpdate",
+    full_name="Whiteboard.BoardUpdate",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
             name="position",
-            full_name="whiteboard.BoardUpdate.position",
+            full_name="Whiteboard.BoardUpdate.position",
             index=0,
             number=1,
             type=13,
@@ -87,7 +86,7 @@ _BOARDUPDATE = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="status",
-            full_name="whiteboard.BoardUpdate.status",
+            full_name="Whiteboard.BoardUpdate.status",
             index=1,
             number=2,
             type=14,
@@ -119,14 +118,14 @@ _BOARDUPDATE = _descriptor.Descriptor(
 
 _BOARDUPDATEREQUEST = _descriptor.Descriptor(
     name="BoardUpdateRequest",
-    full_name="whiteboard.BoardUpdateRequest",
+    full_name="Whiteboard.BoardUpdateRequest",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
             name="updates",
-            full_name="whiteboard.BoardUpdateRequest.updates",
+            full_name="Whiteboard.BoardUpdateRequest.updates",
             index=0,
             number=1,
             type=11,
@@ -158,30 +157,11 @@ _BOARDUPDATEREQUEST = _descriptor.Descriptor(
 
 _BOARDUPDATERESPONSE = _descriptor.Descriptor(
     name="BoardUpdateResponse",
-    full_name="whiteboard.BoardUpdateResponse",
+    full_name="Whiteboard.BoardUpdateResponse",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name="requestStatus",
-            full_name="whiteboard.BoardUpdateResponse.requestStatus",
-            index=0,
-            number=1,
-            type=8,
-            cpp_type=7,
-            label=1,
-            has_default_value=False,
-            default_value=False,
-            message_type=None,
-            enum_type=None,
-            containing_type=None,
-            is_extension=False,
-            extension_scope=None,
-            serialized_options=None,
-            file=DESCRIPTOR,
-        ),
-    ],
+    fields=[],
     extensions=[],
     nested_types=[],
     enum_types=[],
@@ -191,7 +171,7 @@ _BOARDUPDATERESPONSE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[],
     serialized_start=174,
-    serialized_end=218,
+    serialized_end=195,
 )
 
 _BOARDUPDATE.fields_by_name["status"].enum_type = _BOARDSTATUSENUM
@@ -208,7 +188,7 @@ BoardUpdate = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _BOARDUPDATE,
         "__module__": "whiteboard_pb2"
-        # @@protoc_insertion_point(class_scope:whiteboard.BoardUpdate)
+        # @@protoc_insertion_point(class_scope:Whiteboard.BoardUpdate)
     },
 )
 _sym_db.RegisterMessage(BoardUpdate)
@@ -219,7 +199,7 @@ BoardUpdateRequest = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _BOARDUPDATEREQUEST,
         "__module__": "whiteboard_pb2"
-        # @@protoc_insertion_point(class_scope:whiteboard.BoardUpdateRequest)
+        # @@protoc_insertion_point(class_scope:Whiteboard.BoardUpdateRequest)
     },
 )
 _sym_db.RegisterMessage(BoardUpdateRequest)
@@ -230,24 +210,24 @@ BoardUpdateResponse = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _BOARDUPDATERESPONSE,
         "__module__": "whiteboard_pb2"
-        # @@protoc_insertion_point(class_scope:whiteboard.BoardUpdateResponse)
+        # @@protoc_insertion_point(class_scope:Whiteboard.BoardUpdateResponse)
     },
 )
 _sym_db.RegisterMessage(BoardUpdateResponse)
 
 
 _WHITEBOARDSERVICE = _descriptor.ServiceDescriptor(
-    name="WhiteBoardService",
-    full_name="whiteboard.WhiteBoardService",
+    name="WhiteboardService",
+    full_name="Whiteboard.WhiteboardService",
     file=DESCRIPTOR,
     index=0,
     serialized_options=None,
-    serialized_start=276,
-    serialized_end=375,
+    serialized_start=253,
+    serialized_end=352,
     methods=[
         _descriptor.MethodDescriptor(
             name="updateBoard",
-            full_name="whiteboard.WhiteBoardService.updateBoard",
+            full_name="Whiteboard.WhiteboardService.updateBoard",
             index=0,
             containing_service=None,
             input_type=_BOARDUPDATEREQUEST,
@@ -258,6 +238,6 @@ _WHITEBOARDSERVICE = _descriptor.ServiceDescriptor(
 )
 _sym_db.RegisterServiceDescriptor(_WHITEBOARDSERVICE)
 
-DESCRIPTOR.services_by_name["WhiteBoardService"] = _WHITEBOARDSERVICE
+DESCRIPTOR.services_by_name["WhiteboardService"] = _WHITEBOARDSERVICE
 
 # @@protoc_insertion_point(module_scope)

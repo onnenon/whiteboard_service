@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package whiteboard;
+package Whiteboard;
 
-service WhiteBoardService {
+service WhiteboardService {
   rpc updateBoard(BoardUpdateRequest) returns (BoardUpdateResponse);
 }
 
@@ -20,4 +20,4 @@ message BoardUpdate {
 
 message BoardUpdateRequest { repeated BoardUpdate updates = 1; }
 
-message BoardUpdateResponse { bool requestStatus = 1; }
+message BoardUpdateResponse {}

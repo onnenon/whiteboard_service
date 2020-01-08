@@ -15,7 +15,7 @@ def main():
 
     whiteboard = Whiteboard(config.ROW_COUNT, config.USE_BOARD)
 
-    whiteboard_pb2_grpc.add_WhiteBoardServiceServicer_to_server(
+    whiteboard_pb2_grpc.add_WhiteboardServiceServicer_to_server(
         WhiteboardService(whiteboard), server
     )
 
