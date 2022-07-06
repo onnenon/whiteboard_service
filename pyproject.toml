@@ -19,7 +19,7 @@ grpcio-tools = "^1.26.0"
 
 "RPI.GPIO" = {version = "^0.7.0", optional=true}
 rpi_ws281x = {version = "^4.2", optional=true}
-adafruit-circuitpython-neopixel = {version = "^3.4", optional=true}
+adafruit-circuitpython-neopixel = {version = "^6.3", optional=true}
 
 [tool.poetry.extras]
 rpi = ["RPI.GPIO", "rpi_ws281x", "adafruit-circuitpython-neopixel"]
