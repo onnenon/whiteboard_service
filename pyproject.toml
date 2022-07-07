@@ -13,7 +13,7 @@ grpcio = "^1.26.0"
 pytest = "^5.2"
 black = {version = "^19.10b0", allow-prereleases = true}
 isort = "^4.3"
-coverage = "^4.5"
+coverage = "^6.4"
 flake8 = "^3.7.9"
 grpcio-tools = "^1.26.0"
 
