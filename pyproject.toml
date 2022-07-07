@@ -6,7 +6,7 @@ authors = ["Stephen Onnen <sonnen@sourceallies.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-protobuf = "^3.11.2"
+protobuf = "^3.15.0"
 grpcio = "^1.26.0"
 
 [tool.poetry.dev-dependencies]
