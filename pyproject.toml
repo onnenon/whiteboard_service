@@ -12,7 +12,7 @@ grpcio = "^1.26.0"
 [tool.poetry.dev-dependencies]
 pytest = "^7.1"
 black = {version = "^19.10b0", allow-prereleases = true}
-isort = "^4.3"
+isort = "^5.10"
 coverage = "^6.4"
 flake8 = "^3.7.9"
 grpcio-tools = "^1.26.0"
